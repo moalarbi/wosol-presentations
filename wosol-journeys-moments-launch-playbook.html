@@ -49,6 +49,7 @@
             flex-direction: column;
             z-index: 1000;
             border-left: 1px solid var(--muted-gold);
+            transition: transform 0.3s ease;
         }
 
         .sidebar-header {
@@ -108,6 +109,21 @@
             color: var(--muted-gold);
         }
 
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            background: var(--deep-navy);
+            color: var(--warm-cream);
+            border: 1px solid var(--muted-gold);
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
         /* Main Content Styles */
         .main-content {
             margin-right: var(--sidebar-width);
@@ -118,6 +134,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            width: 100%;
         }
 
         .slide-container {
@@ -144,14 +161,14 @@
         /* Typography & Elements */
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
+            font-size: clamp(28px, 5vw, 42px);
             color: var(--deep-navy);
             margin-bottom: 10px;
             line-height: 1.2;
         }
 
         .arabic-title {
-            font-size: 28px;
+            font-size: clamp(20px, 4vw, 28px);
             color: var(--navy);
             margin-bottom: 40px;
             font-weight: 600;
@@ -161,7 +178,7 @@
         }
 
         .subtitle {
-            font-size: 18px;
+            font-size: clamp(14px, 3vw, 18px);
             color: var(--soft-navy);
             margin-bottom: 20px;
             font-weight: 400;
@@ -172,7 +189,7 @@
             border-right: 4px solid var(--muted-gold);
             padding: 25px;
             font-style: italic;
-            font-size: 20px;
+            font-size: clamp(16px, 3.5vw, 20px);
             margin: 40px 0;
             color: var(--navy);
             line-height: 1.6;
@@ -219,10 +236,16 @@
         }
 
         /* Tables */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            min-width: 500px;
         }
 
         th {
@@ -294,8 +317,8 @@
             align-items: center;
         }
 
-        .cover-slide h2 { font-size: 56px; }
-        .cover-slide .arabic-title { font-size: 36px; }
+        .cover-slide h2 { font-size: clamp(36px, 8vw, 56px); }
+        .cover-slide .arabic-title { font-size: clamp(24px, 6vw, 36px); }
 
         .status-tag {
             display: inline-block;
@@ -326,16 +349,47 @@
         }
 
         @media print {
-            .sidebar, .controls, .progress-bar { display: none; }
+            .sidebar, .controls, .progress-bar, .menu-toggle { display: none; }
             .main-content { margin-right: 0; padding: 0; }
             .slide-container { display: block !important; page-break-after: always; box-shadow: none; border: 1px solid #eee; }
         }
 
         @media (max-width: 1024px) {
-            .sidebar { display: none; }
-            .main-content { margin-right: 0; padding: 20px; }
+            .sidebar { 
+                transform: translateX(100%); 
+                width: 250px;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .main-content { 
+                margin-right: 0; 
+                padding: 80px 20px 120px 20px; 
+            }
             .content-grid { grid-template-columns: 1fr; }
-            .slide-container { padding: 40px 20px; }
+            .slide-container { 
+                padding: 40px 20px; 
+                min-height: auto;
+            }
+            .progress-bar {
+                right: 0;
+            }
+            .controls {
+                bottom: 20px;
+                left: 0;
+                right: 0;
+                justify-content: center;
+                background: rgba(246, 244, 241, 0.9);
+                padding: 15px;
+                border-top: 1px solid var(--sand-beige);
+            }
+            .btn {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -343,7 +397,9 @@
 
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
-    <aside class="sidebar">
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h1>WOSOL</h1>
             <p>Launch Playbook</p>
@@ -393,7 +449,7 @@
                         <li>Relationship context (سياق العلاقات)</li>
                         <li>Lifestyle taste (ذوق نمط الحياة)</li>
                         <li>Occasion reminders (التذكير بالمناسبات)</li>
-                        <li>Personalization potential (إمكانية التخصيص)</li>
+                        <li>Personalization potential (إمكانية تكرار المناسبات)</li>
                     </ul>
                 </div>
             </div>
@@ -539,23 +595,27 @@
             <div class="content-grid">
                 <div>
                     <h3 style="font-size: 16px; color: var(--navy);">WOSOL Journeys Fields</h3>
-                    <table>
-                        <tr><td>الاسم ورقم الجوال</td></tr>
-                        <tr><td>الوجهة وتاريخ السفر</td></tr>
-                        <tr><td>عدد المسافرين ونوع الرحلة</td></tr>
-                        <tr><td>مستوى الإقامة والميزانية</td></tr>
-                        <tr><td>هل ترغب بإدارة كاملة؟</td></tr>
-                    </table>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td>الاسم ورقم الجوال</td></tr>
+                            <tr><td>الوجهة وتاريخ السفر</td></tr>
+                            <tr><td>عدد المسافرين ونوع الرحلة</td></tr>
+                            <tr><td>مستوى الإقامة والميزانية</td></tr>
+                            <tr><td>هل ترغب بإدارة كاملة؟</td></tr>
+                        </table>
+                    </div>
                 </div>
                 <div>
                     <h3 style="font-size: 16px; color: var(--navy);">WOSOL Moments Fields</h3>
-                    <table>
-                        <tr><td>الاسم ورقم الجوال</td></tr>
-                        <tr><td>نوع وتاريخ المناسبة</td></tr>
-                        <tr><td>لمن المناسبة ونوع التجربة</td></tr>
-                        <tr><td>الميزانية ومستوى الخصوصية</td></tr>
-                        <tr><td>هل نذكرك بالمناسبات القادمة؟</td></tr>
-                    </table>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><td>الاسم ورقم الجوال</td></tr>
+                            <tr><td>نوع وتاريخ المناسبة</td></tr>
+                            <tr><td>لمن المناسبة ونوع التجربة</td></tr>
+                            <tr><td>الميزانية ومستوى الخصوصية</td></tr>
+                            <tr><td>هل نذكرك بالمناسبات القادمة؟</td></tr>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -663,7 +723,7 @@
             <h2>First Experience Workflow</h2>
             <div class="arabic-title">ورك فلو أول تجربة</div>
             
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                 <div class="workflow-step" style="padding: 10px;"><span class="step-num" style="font-size: 18px;">01</span> Confirm brief</div>
                 <div class="workflow-step" style="padding: 10px;"><span class="step-num" style="font-size: 18px;">02</span> Prepare options</div>
                 <div class="workflow-step" style="padding: 10px;"><span class="step-num" style="font-size: 18px;">03</span> Client approval</div>
@@ -706,40 +766,42 @@
             <h2>Content Launch Plan</h2>
             <div class="arabic-title">خطة محتوى أول 30 يوم</div>
             
-            <table>
-                <thead>
-                    <tr>
-                        <th>Week</th>
-                        <th>Focus Topic</th>
-                        <th>Deliverables</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Week 1</td>
-                        <td>Launch Awareness: What is private planning?</td>
-                        <td rowspan="4">
-                            • 3 Short Videos<br>
-                            • 2 Luxury Static Posts<br>
-                            • 1 Carousel<br>
-                            • 5 Stories<br>
-                            • 1 Lead Gen Post
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Week 2</td>
-                        <td>Problem Stories: Travel stress / Forgotten occasions</td>
-                    </tr>
-                    <tr>
-                        <td>Week 3</td>
-                        <td>Use Cases: Family trip, Anniversary, VIP gift</td>
-                    </tr>
-                    <tr>
-                        <td>Week 4</td>
-                        <td>Conversion: Request planning / Book a call</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Focus Topic</th>
+                            <th>Deliverables</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Week 1</td>
+                            <td>Launch Awareness: What is private planning?</td>
+                            <td rowspan="4">
+                                • 3 Short Videos<br>
+                                • 2 Luxury Static Posts<br>
+                                • 1 Carousel<br>
+                                • 5 Stories<br>
+                                • 1 Lead Gen Post
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Week 2</td>
+                            <td>Problem Stories: Travel stress / Forgotten occasions</td>
+                        </tr>
+                        <tr>
+                            <td>Week 3</td>
+                            <td>Use Cases: Family trip, Anniversary, VIP gift</td>
+                        </tr>
+                        <tr>
+                            <td>Week 4</td>
+                            <td>Conversion: Request planning / Book a call</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <!-- SLIDE 13: PAID CAMPAIGN LAUNCH -->
@@ -801,7 +863,7 @@
             <h2>Roles & Responsibilities</h2>
             <div class="arabic-title">الأدوار والمسؤوليات</div>
             
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
                 <div class="card" style="padding: 15px;">
                     <h3 style="font-size: 14px;">Growth Lead</h3>
                     <p style="font-size: 11px;">Funnel, Landing pages, Campaigns, Reporting.</p>
@@ -880,7 +942,12 @@
                 const li = document.createElement('li');
                 li.className = `nav-item ${index === 0 ? 'active' : ''}`;
                 li.id = `nav-item-${index + 1}`;
-                li.onclick = () => goToSlide(index + 1);
+                li.onclick = () => {
+                    goToSlide(index + 1);
+                    if (window.innerWidth <= 1024) {
+                        document.getElementById('sidebar').classList.remove('open');
+                    }
+                };
                 li.innerHTML = `<span class="num">${(index + 1).toString().padStart(2, '0')}</span> ${title}`;
                 navList.appendChild(li);
             });
@@ -912,6 +979,11 @@
             const progress = (currentSlide / totalSlides) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
         }
+
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').onclick = function() {
+            document.getElementById('sidebar').classList.toggle('open');
+        };
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') nextSlide();
