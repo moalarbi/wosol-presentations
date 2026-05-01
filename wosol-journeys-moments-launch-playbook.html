@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOSOL Journeys & Moments Launch Playbook</title>
+    <style>
+        :root {
+            --deep-navy: #041026;
+            --navy: #16304E;
+            --soft-navy: #1F466D;
+            --warm-cream: #EDE9E3;
+            --sand-beige: #D1C7BA;
+            --soft-bg: #F6F4F1;
+            --white: #FFFFFF;
+            --text: #2A3A50;
+            --muted-gold: #B99A5B;
+            --sidebar-width: 280px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            background-color: var(--soft-bg);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--deep-navy);
+            color: var(--warm-cream);
+            height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            border-left: 1px solid var(--muted-gold);
+        }
+
+        .sidebar-header {
+            padding: 40px 30px;
+            border-bottom: 1px solid rgba(185, 154, 91, 0.2);
+        }
+
+        .sidebar-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: var(--muted-gold);
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header p {
+            font-size: 12px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 0;
+            list-style: none;
+        }
+
+        .nav-item {
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+            border-right: 3px solid transparent;
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            opacity: 1;
+        }
+
+        .nav-item.active {
+            background: rgba(185, 154, 91, 0.1);
+            border-right-color: var(--muted-gold);
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        .nav-item .num {
+            font-family: 'Playfair Display', serif;
+            margin-left: 15px;
+            font-size: 12px;
+            color: var(--muted-gold);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-right: var(--sidebar-width);
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--white);
+            min-height: 700px;
+            padding: 80px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            position: relative;
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .slide-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography & Elements */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--deep-navy);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .arabic-title {
+            font-size: 28px;
+            color: var(--navy);
+            margin-bottom: 40px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--muted-gold);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--soft-navy);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .key-line {
+            background: var(--soft-bg);
+            border-right: 4px solid var(--muted-gold);
+            padding: 25px;
+            font-style: italic;
+            font-size: 20px;
+            margin: 40px 0;
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: var(--soft-bg);
+            padding: 30px;
+            border-radius: 4px;
+            border-top: 3px solid var(--muted-gold);
+        }
+
+        .card h3 {
+            color: var(--deep-navy);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+            padding-right: 20px;
+            position: relative;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--muted-gold);
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background: var(--navy);
+            color: var(--warm-cream);
+            text-align: right;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--sand-beige);
+            font-size: 14px;
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 1001;
+        }
+
+        .btn {
+            background: var(--deep-navy);
+            color: var(--warm-cream);
+            border: 1px solid var(--muted-gold);
+            padding: 12px 25px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            background: var(--muted-gold);
+            color: var(--deep-navy);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            right: var(--sidebar-width);
+            left: 0;
+            height: 4px;
+            background: rgba(185, 154, 91, 0.1);
+            z-index: 1002;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--muted-gold);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Slide Specifics */
+        .cover-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cover-slide h2 { font-size: 56px; }
+        .cover-slide .arabic-title { font-size: 36px; }
+
+        .status-tag {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .status-hot { background: #FFE5E5; color: #D32F2F; }
+        .status-qualified { background: #E8F5E9; color: #2E7D32; }
+        .status-review { background: #FFF3E0; color: #EF6C00; }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background: var(--soft-bg);
+            padding: 15px;
+            border-right: 3px solid var(--navy);
+        }
+        .step-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--muted-gold);
+            margin-left: 20px;
+            min-width: 30px;
+        }
+
+        @media print {
+            .sidebar, .controls, .progress-bar { display: none; }
+            .main-content { margin-right: 0; padding: 0; }
+            .slide-container { display: block !important; page-break-after: always; box-shadow: none; border: 1px solid #eee; }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-right: 0; padding: 20px; }
+            .content-grid { grid-template-columns: 1fr; }
+            .slide-container { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1>WOSOL</h1>
+            <p>Launch Playbook</p>
+        </div>
+        <ul class="nav-list" id="navList">
+            <!-- Nav items injected by JS -->
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <!-- SLIDE 01: COVER -->
+        <section class="slide-container active" id="slide-1">
+            <div class="cover-slide">
+                <div style="color: var(--muted-gold); font-weight: 600; letter-spacing: 3px; margin-bottom: 20px;">STRATEGIC LAUNCH</div>
+                <h2>WOSOL Journeys & Moments</h2>
+                <div class="arabic-title">خطة إطلاق أول بوابتين لجذب العملاء الفاخرين</div>
+                <p class="subtitle">From Luxury Request to WOSOL Membership</p>
+                <p style="font-size: 20px; color: var(--navy);">من الطلب الفاخر إلى عضوية WOSOL</p>
+                <div class="key-line">
+                    “لا نبدأ بعضوية مباشرة؛ نبدأ بتجربة فاخرة تثبت للعميل لماذا يحتاج العضوية.”
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 02: WHY START WITH THESE TWO -->
+        <section class="slide-container" id="slide-2">
+            <h2>Strategic Rationale</h2>
+            <div class="arabic-title">لماذا نبدأ بـ Journeys و Moments؟</div>
+            <p class="subtitle">These two verticals reveal high-value clients quickly and connect directly to WOSOL’s internal system.</p>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Journeys Reveals:</h3>
+                    <ul>
+                        <li>Travel budget (القدرة الشرائية للسفر)</li>
+                        <li>Family needs (احتياجات العائلة)</li>
+                        <li>Privacy level (مستوى الخصوصية)</li>
+                        <li>Service complexity (تعقيد الخدمة)</li>
+                        <li>Repeat travel potential (إمكانية تكرار السفر)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Moments Reveals:</h3>
+                    <ul>
+                        <li>Important dates (التواريخ الهامة)</li>
+                        <li>Gift preferences (تفضيلات الهدايا)</li>
+                        <li>Relationship context (سياق العلاقات)</li>
+                        <li>Lifestyle taste (ذوق نمط الحياة)</li>
+                        <li>Occasion reminders (التذكير بالمناسبات)</li>
+                        <li>Personalization potential (إمكانية التخصيص)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="key-line">
+                “Journeys تكشف القدرة الشرائية، و Moments تكشف التفضيلات الشخصية.”
+            </div>
+        </section>
+
+        <!-- SLIDE 03: WOSOL JOURNEYS DEEP DIVE -->
+        <section class="slide-container" id="slide-3">
+            <h2>WOSOL Journeys</h2>
+            <div class="arabic-title">بوابة السفر والرحلات الفاخرة</div>
+            
+            <div style="margin-bottom: 30px;">
+                <p><strong>Positioning:</strong> ليست وكالة سفر، بل بوابة تخطيط سفر فاخر لمن يريد رحلة تُدار بالكامل بدون ضغط.</p>
+                <p><strong>Main Promise:</strong> رحلة فاخرة لا تبدأ بالحجز… تبدأ بمن يدير تفاصيلها.</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Emotional Value</h3>
+                    <ul>
+                        <li>راحة السفر</li>
+                        <li>لا مفاجآت</li>
+                        <li>لا تنسيق مرهق</li>
+                        <li>خصوصية وسيطرة</li>
+                        <li>تجربة تليق بالمستوى</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Target Clients</h3>
+                    <ul>
+                        <li>رجال أعمال كثيرو السفر</li>
+                        <li>عائلات ثرية</li>
+                        <li>عملاء شهر العسل والذكرى</li>
+                        <li>طيران خاص وفيلات فاخرة</li>
+                        <li>رحلات علاجية أو VIP</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="color: var(--muted-gold); margin-bottom: 15px;">Visible Services</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">تخطيط رحلات</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">فنادق ومنتجعات</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">طيران خاص</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">جداول يومية</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">تجارب خاصة</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">سفر عائلي</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 04: WOSOL MOMENTS DEEP DIVE -->
+        <section class="slide-container" id="slide-4">
+            <h2>WOSOL Moments</h2>
+            <div class="arabic-title">بوابة المناسبات والهدايا والتجارب الخاصة</div>
+            
+            <div style="margin-bottom: 30px;">
+                <p><strong>Positioning:</strong> ليست محل هدايا ولا منظم حفلات، بل بوابة لصناعة لحظات خاصة تُدار بذوق وخصوصية.</p>
+                <p><strong>Main Promise:</strong> لا تجعل مناسبتك المهمة تنتظر آخر لحظة.</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Emotional Value</h3>
+                    <ul>
+                        <li>أنك لم تنسَ</li>
+                        <li>الهدية وصلت كأنك اخترتها بنفسك</li>
+                        <li>اللحظة راقية دون انشغال</li>
+                        <li>أحد يفهم ذوقك</li>
+                        <li>المناسبة مُدارة قبل الوقت</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Target Clients</h3>
+                    <ul>
+                        <li>رجال أعمال مشغولون</li>
+                        <li>أزواج يبحثون عن لحظة خاصة</li>
+                        <li>عائلات ثرية</li>
+                        <li>أصحاب مناسبات متكررة</li>
+                        <li>عملاء يقدرون السرية</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h3 style="color: var(--muted-gold); margin-bottom: 15px;">Visible Services</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">هدايا فاخرة</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">ذكرى زواج</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">مفاجآت فندقية</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">عشاء خاص</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">ورود وعطور</span>
+                    <span style="background: var(--navy); color: white; padding: 5px 15px; font-size: 13px;">هدايا VIP</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 05: LANDING PAGE STRUCTURE -->
+        <section class="slide-container" id="slide-5">
+            <h2>Landing Page Structure</h2>
+            <div class="arabic-title">هيكل صفحة الهبوط لكل بوابة</div>
+            
+            <div class="content-grid">
+                <div class="card" style="border-top-color: var(--navy);">
+                    <h3 style="border-bottom: 1px solid var(--sand-beige); padding-bottom: 10px;">WOSOL Journeys</h3>
+                    <p style="font-size: 13px; margin: 10px 0;"><strong>Hero:</strong> رحلة فاخرة لا تبدأ بالحجز… تبدأ بمن يدير تفاصيلها.</p>
+                    <p style="font-size: 13px; margin-bottom: 15px;"><strong>CTA:</strong> اطلب تخطيط رحلة خاصة</p>
+                    <ul style="font-size: 13px;">
+                        <li>الوعد الشعوري</li>
+                        <li>لمن هذه الخدمة</li>
+                        <li>ما تديره WOSOL</li>
+                        <li>أمثلة رحلات</li>
+                        <li>نموذج التأهيل</li>
+                        <li>Powered by WOSOL Concierge</li>
+                        <li>عضوية WOSOL كخطوة تالية</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-top-color: var(--muted-gold);">
+                    <h3 style="border-bottom: 1px solid var(--sand-beige); padding-bottom: 10px;">WOSOL Moments</h3>
+                    <p style="font-size: 13px; margin: 10px 0;"><strong>Hero:</strong> لحظاتك المهمة تستحق أن تُدار قبل الوقت.</p>
+                    <p style="font-size: 13px; margin-bottom: 15px;"><strong>CTA:</strong> خطط لحظة خاصة</p>
+                    <ul style="font-size: 13px;">
+                        <li>الوعد الشعوري</li>
+                        <li>أنواع المناسبات</li>
+                        <li>ما تديره WOSOL</li>
+                        <li>أمثلة لحظات</li>
+                        <li>نموذج التأهيل</li>
+                        <li>Powered by WOSOL Concierge</li>
+                        <li>عضوية WOSOL كخطوة تالية</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 06: QUALIFICATION FORMS -->
+        <section class="slide-container" id="slide-6">
+            <h2>Qualification Forms</h2>
+            <div class="arabic-title">نماذج تأهيل العملاء</div>
+            
+            <div class="content-grid">
+                <div>
+                    <h3 style="font-size: 16px; color: var(--navy);">WOSOL Journeys Fields</h3>
+                    <table>
+                        <tr><td>الاسم ورقم الجوال</td></tr>
+                        <tr><td>الوجهة وتاريخ السفر</td></tr>
+                        <tr><td>عدد المسافرين ونوع الرحلة</td></tr>
+                        <tr><td>مستوى الإقامة والميزانية</td></tr>
+                        <tr><td>هل ترغب بإدارة كاملة؟</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <h3 style="font-size: 16px; color: var(--navy);">WOSOL Moments Fields</h3>
+                    <table>
+                        <tr><td>الاسم ورقم الجوال</td></tr>
+                        <tr><td>نوع وتاريخ المناسبة</td></tr>
+                        <tr><td>لمن المناسبة ونوع التجربة</td></tr>
+                        <tr><td>الميزانية ومستوى الخصوصية</td></tr>
+                        <tr><td>هل نذكرك بالمناسبات القادمة؟</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; background: var(--soft-bg); padding: 20px;">
+                <p><strong>Budget Ranges:</strong> 10k-25k | 25k-50k | 50k-100k | 100k+ | مناقشة مع الفريق</p>
+            </div>
+            <div class="key-line" style="margin-top: 20px;">
+                “نموذج التأهيل ليس لجمع البيانات فقط، بل لاكتشاف جودة العميل.”
+            </div>
+        </section>
+
+        <!-- SLIDE 07: CRM WORKFLOW -->
+        <section class="slide-container" id="slide-7">
+            <h2>CRM Workflow</h2>
+            <div class="arabic-title">كيف يدخل العميل إلى النظام؟</div>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="workflow-step"><span class="step-num">01</span> Form submitted & Lead enters CRM</div>
+                <div class="workflow-step"><span class="step-num">02</span> Tagging: Source, Budget, Type, Urgency</div>
+                <div class="workflow-step"><span class="step-num">03</span> Membership Fit Score Calculation</div>
+                <div class="workflow-step"><span class="step-num">04</span> Status Assignment (Hot, Qualified, etc.)</div>
+            </div>
+
+            <div class="content-grid" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Lead Statuses</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <span class="status-tag status-hot">Hot Lead</span>
+                        <span class="status-tag status-qualified">Qualified Lead</span>
+                        <span class="status-tag status-review">Needs Review</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>High Fit Score if:</h3>
+                    <ul style="font-size: 13px;">
+                        <li>Budget 50,000+</li>
+                        <li>Complex/Executive request</li>
+                        <li>Repeat potential exists</li>
+                        <li>Wants full management & privacy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 08: FOLLOW-UP WORKFLOW -->
+        <section class="slide-container" id="slide-8">
+            <h2>Follow-up Workflow</h2>
+            <div class="arabic-title">ورك فلو المتابعة بعد الاستفسار</div>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Operational Steps</h3>
+                    <ul>
+                        <li>Response within 1 hour</li>
+                        <li>Personalized message by vertical</li>
+                        <li>Invite to Private Planning Call</li>
+                        <li>Prepare discovery notes</li>
+                        <li>Update CRM after the call</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Sample Messages</h3>
+                    <p style="font-size: 13px; margin-bottom: 15px; border-right: 2px solid var(--muted-gold); padding-right: 10px;">
+                        <strong>Journeys:</strong> أهلًا بك، وصلنا طلبك بخصوص الرحلة الخاصة. سيقوم فريق WOSOL بمراجعة التفاصيل والتواصل معك بخيارات مناسبة.
+                    </p>
+                    <p style="font-size: 13px; border-right: 2px solid var(--muted-gold); padding-right: 10px;">
+                        <strong>Moments:</strong> أهلًا بك، وصلنا طلبك بخصوص المناسبة الخاصة. سنراجع التفاصيل حتى نقترح تجربة تليق باللحظة، ونتواصل معك بهدوء.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 09: PRIVATE PLANNING CALL -->
+        <section class="slide-container" id="slide-9">
+            <h2>Private Planning Call</h2>
+            <div class="arabic-title">جلسة التخطيط الخاصة</div>
+            <p class="subtitle">This is not a sales call. It is a premium discovery conversation.</p>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Key Discovery Questions</h3>
+                    <ul style="font-size: 13px;">
+                        <li>ما الهدف من التجربة؟</li>
+                        <li>ما الذي لا تريد أن يحدث؟</li>
+                        <li>ما مستوى الخصوصية المطلوب؟</li>
+                        <li>من الأشخاص المهمون في التجربة؟</li>
+                        <li>ما التفضيلات التي يجب مراعاتها؟</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Call Output</h3>
+                    <ul style="font-size: 13px;">
+                        <li>Client profile notes</li>
+                        <li>Preference tags</li>
+                        <li>Budget confidence</li>
+                        <li>First experience recommendation</li>
+                        <li>Membership potential</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: FIRST EXPERIENCE WORKFLOW -->
+        <section class="slide-container" id="slide-10">
+            <h2>First Experience Workflow</h2>
+            <div class="arabic-title">ورك فلو أول تجربة</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                <div class="workflow-step" style="padding: 10px;"><span class="step-num" style="font-size: 18px;">01</span> Confirm brief</div>
+                <div class="workflow-step" style="padding: 10px;"><span class="step-num" style="font-size: 18px;">02</span> Prepare options</div>
+                <div class="workflow-step" style="padding: 10px;"><span class="step-num" style="font-size: 18px;">03</span> Client approval</div>
+                <div class="workflow-step" style="padding: 10px;"><span class="step-num" style="font-size: 18px;">04</span> Execution</div>
+                <div class="workflow-step" style="padding: 10px;"><span class="step-num" style="font-size: 18px;">05</span> Quality monitor</div>
+                <div class="workflow-step" style="padding: 10px;"><span class="step-num" style="font-size: 18px;">06</span> Feedback capture</div>
+            </div>
+
+            <div class="key-line">
+                “أول تجربة ليست خدمة منفصلة، بل لحظة إثبات أن WOSOL تستحق علاقة مستمرة.”
+            </div>
+        </section>
+
+        <!-- SLIDE 11: MEMBERSHIP CONVERSION -->
+        <section class="slide-container" id="slide-11">
+            <h2>Membership Conversion</h2>
+            <div class="arabic-title">من الطلب الفاخر إلى العضوية</div>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Journeys Script</h3>
+                    <p style="font-size: 14px; line-height: 1.6;">
+                        "بما أن رحلاتك تحتاج ترتيبًا خاصًا، نقدر من خلال عضوية WOSOL نحفظ تفضيلاتك، وجهاتك، واحتياجات العائلة، عشان كل رحلة قادمة تكون أسرع وأدق وأكثر خصوصية."
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Moments Script</h3>
+                    <p style="font-size: 14px; line-height: 1.6;">
+                        "بدل ما تبدأ كل مناسبة من الصفر، نقدر نبني لك ملف تفضيلات داخل WOSOL، نحفظ فيه المناسبات المهمة، الأذواق، ونقترح عليك قبل الوقت."
+                    </p>
+                </div>
+            </div>
+            <div class="key-line">
+                “نحن لا نبيع العضوية مباشرة؛ نعرضها بعد أن يختبر العميل قيمتها.”
+            </div>
+        </section>
+
+        <!-- SLIDE 12: CONTENT LAUNCH PLAN -->
+        <section class="slide-container" id="slide-12">
+            <h2>Content Launch Plan</h2>
+            <div class="arabic-title">خطة محتوى أول 30 يوم</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Focus Topic</th>
+                        <th>Deliverables</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Week 1</td>
+                        <td>Launch Awareness: What is private planning?</td>
+                        <td rowspan="4">
+                            • 3 Short Videos<br>
+                            • 2 Luxury Static Posts<br>
+                            • 1 Carousel<br>
+                            • 5 Stories<br>
+                            • 1 Lead Gen Post
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Week 2</td>
+                        <td>Problem Stories: Travel stress / Forgotten occasions</td>
+                    </tr>
+                    <tr>
+                        <td>Week 3</td>
+                        <td>Use Cases: Family trip, Anniversary, VIP gift</td>
+                    </tr>
+                    <tr>
+                        <td>Week 4</td>
+                        <td>Conversion: Request planning / Book a call</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SLIDE 13: PAID CAMPAIGN LAUNCH -->
+        <section class="slide-container" id="slide-13">
+            <h2>Paid Campaign Launch</h2>
+            <div class="arabic-title">خطة إطلاق الحملات المدفوعة</div>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Channels</h3>
+                    <ul>
+                        <li>Google Search (High-intent)</li>
+                        <li>Instagram (Luxury visuals)</li>
+                        <li>Snapchat (Saudi reach)</li>
+                        <li>Retargeting (Warm users)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Campaign Themes</h3>
+                    <p style="font-size: 13px;"><strong>Journeys:</strong> Luxury travel, Private jets, Family luxury.</p>
+                    <p style="font-size: 13px; margin-top: 10px;"><strong>Moments:</strong> Luxury gifts, Anniversary planning, Private dinner.</p>
+                </div>
+            </div>
+            <div style="margin-top: 30px; background: var(--navy); color: white; padding: 20px; text-align: center;">
+                Cold Traffic → Landing Pages | Qualified Leads → WhatsApp / Planning Call
+            </div>
+        </section>
+
+        <!-- SLIDE 14: WEEKLY OPERATING RHYTHM -->
+        <section class="slide-container" id="slide-14">
+            <h2>Operating Rhythm</h2>
+            <div class="arabic-title">الإيقاع التشغيلي الأسبوعي</div>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Weekly Review Metrics</h3>
+                    <ul style="font-size: 13px;">
+                        <li>Page visits & Form submissions</li>
+                        <li>Lead quality & Budget level</li>
+                        <li>Planning calls & Proposals</li>
+                        <li>Closed experiences & Conversions</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Meeting Structure</h3>
+                    <ul style="font-size: 13px;">
+                        <li>What came in?</li>
+                        <li>What is qualified?</li>
+                        <li>What moved forward?</li>
+                        <li>What is stuck?</li>
+                        <li>Improvements for next week?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 15: ROLES & RESPONSIBILITIES -->
+        <section class="slide-container" id="slide-15">
+            <h2>Roles & Responsibilities</h2>
+            <div class="arabic-title">الأدوار والمسؤوليات</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                <div class="card" style="padding: 15px;">
+                    <h3 style="font-size: 14px;">Growth Lead</h3>
+                    <p style="font-size: 11px;">Funnel, Landing pages, Campaigns, Reporting.</p>
+                </div>
+                <div class="card" style="padding: 15px;">
+                    <h3 style="font-size: 14px;">Content</h3>
+                    <p style="font-size: 11px;">Vertical-specific content and ad copy.</p>
+                </div>
+                <div class="card" style="padding: 15px;">
+                    <h3 style="font-size: 14px;">Design</h3>
+                    <p style="font-size: 11px;">Luxury visuals and landing page assets.</p>
+                </div>
+                <div class="card" style="padding: 15px;">
+                    <h3 style="font-size: 14px;">CRM / Ops</h3>
+                    <p style="font-size: 11px;">Track leads, status updates, preferences.</p>
+                </div>
+                <div class="card" style="padding: 15px;">
+                    <h3 style="font-size: 14px;">Concierge</h3>
+                    <p style="font-size: 11px;">Planning calls and experience execution.</p>
+                </div>
+                <div class="card" style="padding: 15px;">
+                    <h3 style="font-size: 14px;">Management</h3>
+                    <p style="font-size: 11px;">Strategy approval and membership offers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 16: FINAL LAUNCH CHECKLIST -->
+        <section class="slide-container" id="slide-16">
+            <h2>Final Launch Checklist</h2>
+            <div class="arabic-title">قائمة التشغيل النهائية</div>
+            
+            <div class="content-grid">
+                <ul style="font-size: 14px;">
+                    <li>أسماء البوابات معتمدة</li>
+                    <li>الصفحات مكتوبة ومصممة</li>
+                    <li>نماذج التأهيل جاهزة</li>
+                    <li>CRM fields جاهزة</li>
+                    <li>رسائل المتابعة جاهزة</li>
+                    <li>أول 15 محتوى جاهز</li>
+                </ul>
+                <ul style="font-size: 14px;">
+                    <li>أول 6 إعلانات جاهزة</li>
+                    <li>Google Search جاهز</li>
+                    <li>Instagram/Snapchat جاهز</li>
+                    <li>Dashboard جاهز</li>
+                    <li>Weekly review محدد</li>
+                    <li>Owner لكل مهمة محدد</li>
+                </ul>
+            </div>
+            <div class="key-line">
+                “إذا لم تكن الرحلة من الطلب إلى العضوية واضحة، سنجلب Leads… لكن لن نبني نموًا.”
+            </div>
+        </section>
+
+        <div class="controls">
+            <button class="btn" onclick="prevSlide()">السابق</button>
+            <button class="btn" onclick="nextSlide()">التالي</button>
+            <button class="btn" onclick="window.print()">طباعة PDF</button>
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 16;
+        const slideTitles = [
+            "Cover Page", "Strategic Rationale", "WOSOL Journeys", "WOSOL Moments",
+            "Landing Structure", "Qualification Forms", "CRM Workflow", "Follow-up Workflow",
+            "Planning Call", "First Experience", "Membership Conversion", "Content Plan",
+            "Paid Campaigns", "Operating Rhythm", "Roles & Responsibilities", "Final Checklist"
+        ];
+
+        function initNav() {
+            const navList = document.getElementById('navList');
+            slideTitles.forEach((title, index) => {
+                const li = document.createElement('li');
+                li.className = `nav-item ${index === 0 ? 'active' : ''}`;
+                li.id = `nav-item-${index + 1}`;
+                li.onclick = () => goToSlide(index + 1);
+                li.innerHTML = `<span class="num">${(index + 1).toString().padStart(2, '0')}</span> ${title}`;
+                navList.appendChild(li);
+            });
+            updateProgress();
+        }
+
+        function goToSlide(n) {
+            document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+            document.getElementById(`nav-item-${currentSlide}`).classList.remove('active');
+            
+            currentSlide = n;
+            
+            document.getElementById(`slide-${currentSlide}`).classList.add('active');
+            document.getElementById(`nav-item-${currentSlide}`).classList.add('active');
+            
+            updateProgress();
+            window.scrollTo(0, 0);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) goToSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) goToSlide(currentSlide - 1);
+        }
+
+        function updateProgress() {
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') nextSlide();
+            if (e.key === 'ArrowRight') prevSlide();
+        });
+
+        initNav();
+    </script>
+</body>
+</html>

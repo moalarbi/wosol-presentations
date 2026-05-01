@@ -1,0 +1,1201 @@
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Luxury Lead Ecosystem | WOSOL Concierge</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#041026;--navy2:#16304E;--navy3:#1F466D;
+  --cream:#EDE9E3;--sand:#D1C7BA;--bg:#F6F4F1;
+  --white:#FFFFFF;--text:#2A3A50;--muted:#68707D;
+  --gold:#B99A5B;--gold2:rgba(185,154,91,.18);
+  --border:rgba(4,16,38,.09);
+  --pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='%23D1C7BA' stroke-width='.5' opacity='.08'%3E%3Cpath d='M30 5L55 30L30 55L5 30Z'/%3E%3Cpath d='M30 18L42 30L30 42L18 30Z'/%3E%3Cline x1='30' y1='0' x2='30' y2='60'/%3E%3Cline x1='0' y1='30' x2='60' y2='30'/%3E%3C/g%3E%3C/svg%3E");
+  --pat-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='%23D1C7BA' stroke-width='.5' opacity='.04'%3E%3Cpath d='M30 5L55 30L30 55L5 30Z'/%3E%3Cpath d='M30 18L42 30L30 42L18 30Z'/%3E%3Cline x1='30' y1='0' x2='30' y2='60'/%3E%3Cline x1='0' y1='30' x2='60' y2='30'/%3E%3C/g%3E%3C/svg%3E");
+}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;}
+.en{font-family:'Poppins',sans-serif!important;}
+
+/* SIDEBAR */
+.sidebar{
+position:fixed;top:0;right:0;width:230px;height:100vh;
+background:var(–navy);border-left:1px solid rgba(209,199,186,.1);
+z-index:200;display:flex;flex-direction:column;overflow-y:auto;
+}
+.sb-logo{padding:28px 22px 20px;border-bottom:1px solid rgba(209,199,186,.08);}
+.sb-logo-w{font-family:‘Poppins’,sans-serif;font-size:17px;font-weight:600;letter-spacing:.2em;color:var(–sand);display:block;}
+.sb-logo-s{font-family:‘Poppins’,sans-serif;font-size:7px;letter-spacing:.32em;text-transform:uppercase;color:rgba(209,199,186,.35);display:block;margin-top:3px;}
+.sb-title{padding:16px 22px 8px;font-size:9px;letter-spacing:.14em;color:rgba(209,199,186,.3);font-family:‘Poppins’,sans-serif;text-transform:uppercase;}
+.sb-nav{list-style:none;padding:0 0 20px;}
+.sb-nav a{
+display:flex;align-items:center;gap:10px;
+padding:9px 22px;text-decoration:none;
+font-size:11.5px;color:rgba(237,233,227,.42);
+border-right:2px solid transparent;
+transition:all .2s;
+}
+.sb-nav a:hover,.sb-nav a.active{color:var(–sand);border-right-color:var(–gold);background:rgba(209,199,186,.04);}
+.sb-num{font-family:‘Poppins’,sans-serif;font-size:9px;color:rgba(209,199,186,.22);width:18px;flex-shrink:0;}
+.sb-nav a.active .sb-num,.sb-nav a:hover .sb-num{color:rgba(209,199,186,.4);}
+.sb-footer{padding:16px 22px 22px;border-top:1px solid rgba(209,199,186,.08);margin-top:auto;}
+.sb-progress-lbl{font-family:‘Poppins’,sans-serif;font-size:8.5px;letter-spacing:.14em;color:rgba(209,199,186,.3);margin-bottom:8px;display:flex;justify-content:space-between;}
+.sb-progress-bar{height:2px;background:rgba(209,199,186,.1);border-radius:1px;}
+.sb-progress-fill{height:100%;background:var(–gold);transition:width .4s ease;width:7%;}
+.sb-print{
+display:block;margin-top:14px;text-align:center;
+font-family:‘Poppins’,sans-serif;font-size:9px;font-weight:500;
+letter-spacing:.12em;text-transform:uppercase;
+background:rgba(185,154,91,.15);color:var(–gold);
+border:1px solid rgba(185,154,91,.25);padding:9px;
+cursor:pointer;text-decoration:none;transition:all .2s;
+}
+.sb-print:hover{background:rgba(185,154,91,.25);}
+
+/* MOBILE TOGGLE */
+.mob-toggle{
+display:none;position:fixed;top:14px;left:14px;z-index:300;
+background:var(–navy);border:1px solid rgba(209,199,186,.2);
+padding:10px 13px;cursor:pointer;flex-direction:column;gap:5px;
+}
+.mob-toggle span{display:block;width:20px;height:1.5px;background:var(–sand);}
+
+/* MAIN */
+.main{margin-right:230px;min-height:100vh;}
+
+/* SLIDE BASE */
+.slide{min-height:100vh;position:relative;overflow:hidden;}
+.slide-dark{background:var(–navy);}
+.slide-light{background:var(–bg);}
+.slide-white{background:var(–white);}
+.slide-cream{background:var(–cream);}
+.slide-inner{max-width:960px;margin:0 auto;padding:72px 60px;}
+.slide-inner-wide{max-width:1100px;margin:0 auto;padding:72px 60px;}
+
+/* PATTERN OVERLAYS */
+.slide-dark::before{content:’’;position:absolute;inset:0;background-image:var(–pat-dark);}
+.slide-light::before{content:’’;position:absolute;inset:0;background-image:var(–pat);}
+.slide-dark .slide-inner,.slide-dark .slide-inner-wide,
+.slide-light .slide-inner,.slide-light .slide-inner-wide{position:relative;z-index:1;}
+
+/* SLIDE HEADER */
+.slide-num{font-family:‘Poppins’,sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(–gold);margin-bottom:12px;display:block;}
+.slide-num-d{font-family:‘Poppins’,sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(185,154,91,.5);margin-bottom:12px;display:block;}
+.slide-en{font-family:‘Poppins’,sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(185,154,91,.6);margin-bottom:6px;display:block;}
+.slide-en-d{font-family:‘Poppins’,sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(185,154,91,.4);margin-bottom:6px;display:block;}
+.slide-title{font-size:clamp(24px,3.5vw,38px);font-weight:700;color:var(–text);line-height:1.3;margin-bottom:8px;}
+.slide-title-d{font-size:clamp(24px,3.5vw,38px);font-weight:700;color:var(–cream);line-height:1.3;margin-bottom:8px;}
+.slide-sub{font-size:14px;font-weight:300;color:var(–muted);margin-bottom:40px;}
+.slide-sub-d{font-size:14px;font-weight:300;color:rgba(237,233,227,.5);margin-bottom:40px;}
+.divider{width:48px;height:2px;background:var(–gold);margin-bottom:40px;}
+.divider-full{height:1px;background:var(–border);margin:32px 0;}
+.divider-full-d{height:1px;background:rgba(209,199,186,.1);margin:28px 0;}
+
+/* COVER */
+.cover{
+background:var(–navy);min-height:100vh;
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+text-align:center;padding:60px 40px;position:relative;overflow:hidden;
+}
+.cover::before{content:’’;position:absolute;inset:0;background-image:var(–pat-dark);}
+.cover-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.cover-ring{border-radius:50%;border:1px solid rgba(209,199,186,.05);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.cover-inner{position:relative;z-index:1;}
+.cover-tag{font-family:‘Poppins’,sans-serif;font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(–gold);margin-bottom:44px;display:block;opacity:.7;}
+.cover-title{font-family:‘Poppins’,sans-serif;font-size:clamp(38px,7vw,72px);font-weight:300;letter-spacing:.08em;color:var(–sand);line-height:1;margin-bottom:10px;}
+.cover-title-sub{font-family:‘Poppins’,sans-serif;font-size:clamp(12px,2vw,16px);letter-spacing:.24em;color:rgba(209,199,186,.38);margin-bottom:48px;display:block;}
+.cover-divider{width:60px;height:1px;background:var(–gold);margin:0 auto 40px;opacity:.5;}
+.cover-ar{font-size:clamp(22px,4vw,40px);font-weight:700;color:var(–cream);margin-bottom:10px;}
+.cover-ar-sub{font-size:clamp(13px,2vw,17px);font-weight:300;color:rgba(237,233,227,.45);margin-bottom:52px;}
+.cover-meta{font-family:‘Poppins’,sans-serif;font-size:9px;letter-spacing:.2em;color:rgba(209,199,186,.28);}
+
+/* KEY LINE */
+.key-line{
+background:var(–gold2);border-right:3px solid var(–gold);
+padding:18px 22px;font-size:15px;font-weight:500;
+color:var(–text);line-height:1.75;margin-top:28px;
+}
+.key-line-d{
+background:rgba(185,154,91,.1);border-right:3px solid var(–gold);
+padding:18px 22px;font-size:15px;font-weight:500;
+color:var(–cream);line-height:1.75;margin-top:28px;
+}
+
+/* POINTS LIST */
+.points{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:24px;}
+.point{display:flex;gap:16px;align-items:flex-start;padding:16px 18px;background:var(–white);border:1px solid var(–border);transition:border-color .2s;}
+.point:hover{border-color:rgba(185,154,91,.3);}
+.point-n{font-family:‘Poppins’,sans-serif;font-size:13px;font-weight:600;color:var(–gold);flex-shrink:0;margin-top:1px;min-width:22px;}
+.point-t{font-size:14.5px;color:var(–text);line-height:1.75;}
+.point-d{display:flex;gap:16px;align-items:flex-start;padding:16px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(209,199,186,.1);margin-bottom:12px;}
+.point-d .point-n{color:var(–gold);}
+.point-d .point-t{color:rgba(237,233,227,.7);}
+
+/* CARDS GRID */
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(–white);border:1px solid var(–border);padding:24px 20px;position:relative;transition:all .25s;}
+.card::before{content:’’;position:absolute;top:0;right:0;width:3px;height:32px;background:var(–gold);}
+.card:hover{box-shadow:0 6px 24px rgba(4,16,38,.07);transform:translateY(-2px);}
+.card-d{background:rgba(255,255,255,.04);border:1px solid rgba(209,199,186,.1);padding:24px 20px;position:relative;}
+.card-d::before{content:’’;position:absolute;top:0;right:0;width:3px;height:32px;background:var(–gold);}
+.card-tag{font-family:‘Poppins’,sans-serif;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(–gold);margin-bottom:8px;display:block;}
+.card-title{font-size:14px;font-weight:600;color:var(–text);margin-bottom:8px;}
+.card-title-d{font-size:14px;font-weight:600;color:var(–sand);margin-bottom:8px;}
+.card-body{font-size:12.5px;font-weight:300;color:var(–muted);line-height:1.75;}
+.card-body-d{font-size:12.5px;font-weight:300;color:rgba(237,233,227,.55);line-height:1.75;}
+
+/* PHASE CARDS */
+.phases{display:flex;flex-direction:column;gap:1px;background:var(–border);}
+.phase{background:var(–white);padding:28px 32px;display:flex;gap:32px;align-items:flex-start;}
+.phase-num{font-family:‘Poppins’,sans-serif;font-size:11px;font-weight:600;color:var(–gold);flex-shrink:0;border:1px solid rgba(185,154,91,.3);padding:6px 12px;min-width:80px;text-align:center;}
+.phase-content{flex:1;}
+.phase-title{font-size:16px;font-weight:700;color:var(–text);margin-bottom:6px;}
+.phase-timing{font-family:‘Poppins’,sans-serif;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(–gold);margin-bottom:12px;display:block;}
+.phase-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.phase-tag{font-family:‘Poppins’,sans-serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;background:var(–gold2);color:var(–gold);border:1px solid rgba(185,154,91,.2);padding:4px 12px;}
+.phase-why{font-size:13px;font-weight:300;color:var(–muted);line-height:1.75;}
+
+/* BUDGET CARDS */
+.budget-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(–border);}
+.budget-card{background:var(–white);padding:28px 22px;}
+.budget-card.featured{background:var(–navy);position:relative;}
+.budget-card.featured::after{content:‘موصى به’;position:absolute;top:16px;left:16px;font-size:9px;letter-spacing:.12em;background:var(–gold);color:var(–navy);padding:3px 10px;font-weight:600;}
+.bc-option{font-family:‘Poppins’,sans-serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(–gold);margin-bottom:8px;display:block;}
+.bc-name{font-size:17px;font-weight:700;color:var(–text);margin-bottom:6px;}
+.bc-name-d{font-size:17px;font-weight:700;color:var(–cream);margin-bottom:6px;}
+.bc-purpose{font-size:12.5px;font-weight:300;color:var(–muted);margin-bottom:20px;line-height:1.7;}
+.bc-purpose-d{font-size:12.5px;font-weight:300;color:rgba(237,233,227,.5);margin-bottom:20px;line-height:1.7;}
+.bc-items{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.bc-item{font-size:12px;font-weight:300;color:var(–muted);padding-right:14px;position:relative;line-height:1.6;}
+.bc-item::before{content:’·’;position:absolute;right:0;color:var(–gold);font-size:16px;top:-2px;}
+.bc-item-d{font-size:12px;font-weight:300;color:rgba(237,233,227,.5);padding-right:14px;position:relative;line-height:1.6;}
+.bc-item-d::before{content:’·’;position:absolute;right:0;color:var(–gold);font-size:16px;top:-2px;}
+
+/* BLUEPRINT */
+.bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.bp-steps{display:flex;flex-direction:column;gap:0;}
+.bp-step{display:flex;gap:16px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(–border);}
+.bp-step:last-child{border-bottom:none;}
+.bp-sn{font-family:‘Poppins’,sans-serif;font-size:11px;font-weight:600;color:var(–gold);flex-shrink:0;width:22px;}
+.bp-st{font-size:13px;color:var(–text);line-height:1.65;}
+.bp-example{background:var(–navy);padding:28px 24px;}
+.bp-ex-tag{font-family:‘Poppins’,sans-serif;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(–gold);margin-bottom:14px;display:block;}
+.bp-ex-hero{font-size:16px;font-weight:600;color:var(–cream);line-height:1.6;margin-bottom:18px;border-right:3px solid var(–gold);padding-right:14px;}
+.bp-ex-items{display:flex;flex-direction:column;gap:8px;}
+.bp-ex-item{font-size:12px;font-weight:300;color:rgba(237,233,227,.55);padding-right:14px;position:relative;line-height:1.6;}
+.bp-ex-item::before{content:’·’;position:absolute;right:0;color:var(–gold);font-size:16px;top:-2px;}
+.bp-upsell{background:rgba(185,154,91,.1);border:1px solid rgba(185,154,91,.2);padding:16px;margin-top:16px;font-size:12.5px;color:rgba(237,233,227,.7);line-height:1.75;}
+
+/* AD COPIES */
+.ads-grid{display:flex;flex-direction:column;gap:0;}
+.ad-item{border-bottom:1px solid var(–border);padding:22px 0;display:grid;grid-template-columns:160px 1fr;gap:24px;}
+.ad-item:last-child{border-bottom:none;}
+.ad-brand{font-family:‘Poppins’,sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(–gold);}
+.ad-copies{display:flex;flex-direction:column;gap:8px;}
+.ad-copy{font-size:14px;font-weight:400;color:var(–text);line-height:1.7;padding:10px 14px;background:var(–bg);border-right:2px solid rgba(185,154,91,.3);}
+.ad-note{background:var(–gold2);border:1px solid rgba(185,154,91,.2);padding:14px 18px;font-size:13px;color:var(–text);line-height:1.75;margin-top:20px;}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:0;}
+.cl-week{margin-bottom:28px;}
+.cl-week-title{font-family:‘Poppins’,sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(–gold);margin-bottom:12px;display:block;padding-bottom:8px;border-bottom:1px solid var(–border);}
+.cl-items{display:flex;flex-direction:column;gap:8px;}
+.cl-item{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;background:var(–white);border:1px solid var(–border);font-size:13.5px;color:var(–text);line-height:1.65;}
+.cl-dot{width:6px;height:6px;border-radius:50%;background:var(–gold);flex-shrink:0;margin-top:7px;}
+
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(–border);}
+.kpi-cell{background:var(–white);padding:18px 14px;text-align:center;transition:all .25s;}
+.kpi-cell:hover{background:var(–navy);}
+.kpi-cell:hover .kpi-label{color:rgba(209,199,186,.4);}
+.kpi-cell:hover .kpi-name{color:var(–cream);}
+.kpi-label{font-family:‘Poppins’,sans-serif;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(–gold);margin-bottom:6px;display:block;transition:color .25s;}
+.kpi-name{font-size:12px;font-weight:600;color:var(–text);line-height:1.4;transition:color .25s;}
+
+/* DASHBOARD */
+.dash-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(–border);}
+.dash-group{background:var(–white);padding:24px 20px;}
+.dg-title{font-family:‘Poppins’,sans-serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(–gold);margin-bottom:14px;display:block;padding-bottom:10px;border-bottom:1px solid var(–border);}
+.dg-items{display:flex;flex-direction:column;gap:8px;}
+.dg-item{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(–text);padding-right:12px;position:relative;line-height:1.6;}
+.dg-item::before{content:’·’;position:absolute;right:0;color:var(–gold);font-size:16px;top:-2px;}
+
+/* BRAND RULES */
+.brand-rules{display:flex;flex-direction:column;gap:12px;}
+.br-item{display:flex;gap:16px;align-items:flex-start;padding:16px 20px;background:var(–white);border:1px solid var(–border);}
+.br-n{font-family:‘Poppins’,sans-serif;font-size:13px;font-weight:600;color:var(–gold);flex-shrink:0;min-width:24px;}
+.br-t{font-size:14px;color:var(–text);line-height:1.7;}
+
+/* GO/NO-GO */
+.gng-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(–border);}
+.gng-col{padding:28px 22px;}
+.gng-col.scale{background:var(–white);}
+.gng-col.pause{background:rgba(4,16,38,.03);}
+.gng-col.improve{background:var(–white);}
+.gng-tag{font-family:‘Poppins’,sans-serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;display:block;padding-bottom:10px;border-bottom:2px solid;}
+.gng-col.scale .gng-tag{color:#2a7a4b;border-color:#2a7a4b;}
+.gng-col.pause .gng-tag{color:#8b2a2a;border-color:#8b2a2a;}
+.gng-col.improve .gng-tag{color:var(–gold);border-color:var(–gold);}
+.gng-items{display:flex;flex-direction:column;gap:9px;}
+.gng-item{font-size:12.5px;color:var(–text);padding-right:14px;position:relative;line-height:1.65;}
+.gng-item::before{content:’·’;position:absolute;right:0;font-size:16px;top:-2px;}
+.gng-col.scale .gng-item::before{color:#2a7a4b;}
+.gng-col.pause .gng-item::before{color:#8b2a2a;}
+.gng-col.improve .gng-item::before{color:var(–gold);}
+
+/* FINAL SLIDE */
+.final{background:var(–navy);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px;position:relative;overflow:hidden;}
+.final::before{content:’’;position:absolute;inset:0;background-image:var(–pat-dark);}
+.final-inner{position:relative;z-index:1;max-width:760px;}
+.final-tag{font-family:‘Poppins’,sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(–gold);margin-bottom:32px;display:block;opacity:.7;}
+.final-stmt{font-size:clamp(16px,2.5vw,20px);font-weight:400;color:rgba(237,233,227,.7);line-height:2;margin-bottom:44px;}
+.final-bold{font-size:clamp(20px,3.5vw,28px);font-weight:700;color:var(–cream);line-height:1.4;margin-bottom:44px;border-right:4px solid var(–gold);padding-right:24px;text-align:right;}
+.final-en{font-family:‘Poppins’,sans-serif;font-size:12px;letter-spacing:.1em;color:rgba(185,154,91,.7);line-height:2.2;}
+.final-divider{width:60px;height:1px;background:var(–gold);margin:0 auto 44px;opacity:.4;}
+
+/* PRINT */
+@media print{
+.sidebar,.mob-toggle{display:none!important;}
+.main{margin-right:0!important;}
+.slide{min-height:auto;page-break-after:always;}
+.slide-inner,.slide-inner-wide{padding:40px;}
+body{background:#fff;}
+.slide-dark{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.sidebar{transform:translateX(100%);transition:transform .3s;}
+.sidebar.open{transform:translateX(0);}
+.main{margin-right:0;}
+.mob-toggle{display:flex;}
+.slide-inner,.slide-inner-wide{padding:56px 28px;}
+.cards-3,.cards-4{grid-template-columns:1fr 1fr;}
+.budget-grid{grid-template-columns:1fr;}
+.bp-grid{grid-template-columns:1fr;}
+.kpi-grid{grid-template-columns:repeat(3,1fr);}
+.dash-grid{grid-template-columns:1fr;}
+.gng-grid{grid-template-columns:1fr;}
+.ads-grid .ad-item{grid-template-columns:1fr;}
+.phase{flex-direction:column;gap:14px;}
+}
+@media(max-width:600px){
+.cards-3,.cards-2,.cards-4{grid-template-columns:1fr;}
+.kpi-grid{grid-template-columns:1fr 1fr;}
+.slide-inner,.slide-inner-wide{padding:48px 22px;}
+}
+</style>
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+
+<nav class="sidebar" id="sidebar">
+  <div class="sb-logo">
+    <span class="sb-logo-w en">WOSOL</span>
+    <span class="sb-logo-s en">CONCIERGE</span>
+  </div>
+  <div class="sb-title">Luxury Lead Ecosystem</div>
+  <ul class="sb-nav">
+    <li><a href="#s01" class="active"><span class="sb-num en">01</span>الغلاف</a></li>
+    <li><a href="#s02"><span class="sb-num en">02</span>الملخص التنفيذي</a></li>
+    <li><a href="#s03"><span class="sb-num en">03</span>الفكرة الجوهرية</a></li>
+    <li><a href="#s04"><span class="sb-num en">04</span>البوابات المتخصصة</a></li>
+    <li><a href="#s05"><span class="sb-num en">05</span>مراحل الإطلاق</a></li>
+    <li><a href="#s06"><span class="sb-num en">06</span>نظام الفانل</a></li>
+    <li><a href="#s07"><span class="sb-num en">07</span>نموذج صفحة الهبوط</a></li>
+    <li><a href="#s08"><span class="sb-num en">08</span>نماذج إعلانية</a></li>
+    <li><a href="#s09"><span class="sb-num en">09</span>ميزانية 90 يوم</a></li>
+    <li><a href="#s10"><span class="sb-num en">10</span>خطة أول 30 يوم</a></li>
+    <li><a href="#s11"><span class="sb-num en">11</span>مؤشرات الأداء</a></li>
+    <li><a href="#s12"><span class="sb-num en">12</span>لوحة متابعة الإدارة</a></li>
+    <li><a href="#s13"><span class="sb-num en">13</span>حماية براند WOSOL</a></li>
+    <li><a href="#s14"><span class="sb-num en">14</span>قواعد التوسع أو الإيقاف</a></li>
+    <li><a href="#s15"><span class="sb-num en">15</span>الخلاصة التنفيذية</a></li>
+  </ul>
+  <div class="sb-footer">
+    <div class="sb-progress-lbl">
+      <span>التقدم</span>
+      <span id="prog-txt">0%</span>
+    </div>
+    <div class="sb-progress-bar">
+      <div class="sb-progress-fill" id="prog-fill"></div>
+    </div>
+    <a href="#" class="sb-print en" onclick="window.print();return false;">PRINT / SAVE PDF</a>
+  </div>
+</nav>
+
+<!-- MOBILE TOGGLE -->
+
+<button class="mob-toggle" id="mob-toggle" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- S01: COVER -->
+
+<section class="slide cover" id="s01">
+  <div class="cover-rings">
+    <div class="cover-ring" style="width:700px;height:700px;"></div>
+    <div class="cover-ring" style="width:500px;height:500px;"></div>
+    <div class="cover-ring" style="width:300px;height:300px;"></div>
+  </div>
+  <div class="cover-inner">
+    <span class="cover-tag en">WOSOL CONCIERGE · INTERNAL STRATEGY DECK · CONFIDENTIAL</span>
+    <div class="cover-title en">WOSOL</div>
+    <span class="cover-title-sub en">CONCIERGE</span>
+    <div class="cover-divider"></div>
+    <div class="cover-ar">Luxury Lead Ecosystem</div>
+    <div class="cover-ar" style="font-size:clamp(18px,3vw,30px);font-weight:300;color:rgba(237,233,227,.7);margin-bottom:8px;">نظام جذب العملاء الفاخرين</div>
+    <div class="cover-ar-sub">بوابات متخصصة · تجربة أولى · عضوية مستدامة</div>
+    <div class="cover-meta en">Luxury Intent → Qualified Lead → Private Experience → Membership Growth</div>
+  </div>
+</section>
+
+<!-- S02: EXECUTIVE SUMMARY -->
+
+<section class="slide slide-dark" id="s02">
+  <div class="slide-inner">
+    <span class="slide-num-d en">02 · Executive Summary</span>
+    <span class="slide-en-d en">الملخص التنفيذي</span>
+    <h2 class="slide-title-d">الملخص التنفيذي</h2>
+    <div class="divider"></div>
+
+```
+<ul style="list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:36px;">
+  <li class="point-d">
+    <span class="point-n">01</span>
+    <span class="point-t">WOSOL لا تحتاج عملاء أكثر، بل تحتاج عملاء أعلى قيمة.</span>
+  </li>
+  <li class="point-d">
+    <span class="point-n">02</span>
+    <span class="point-t">العملاء عاليي القيمة لا يبحثون دائماً عن "كونسيرج"، بل يبحثون عن احتياج فاخر واضح مثل السفر، المناسبات، الوصول الحصري، أو تجهيز تجربة خاصة.</span>
+  </li>
+  <li class="point-d">
+    <span class="point-n">03</span>
+    <span class="point-t">لذلك نبني بوابات جذب متخصصة تحت مظلة WOSOL، كل بوابة تستهدف احتياجاً فاخراً محدداً.</span>
+  </li>
+  <li class="point-d">
+    <span class="point-n">04</span>
+    <span class="point-t">كل بوابة تحتوي على صفحة هبوط، محتوى مكثف، حملات مدفوعة، ونموذج تأهيل ذكي.</span>
+  </li>
+  <li class="point-d">
+    <span class="point-n">05</span>
+    <span class="point-t">بعد أول تجربة ناجحة، يتم تحويل العميل إلى عضوية WOSOL Concierge كعلاقة مستمرة.</span>
+  </li>
+</ul>
+
+<div class="key-line-d">
+  "الفكرة ليست إنشاء شركات جديدة، بل بناء مداخل أذكى للعملاء الأعلى قيمة."
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S03: THE CORE IDEA -->
+
+<section class="slide slide-light" id="s03">
+  <div class="slide-inner">
+    <span class="slide-num en">03 · The Core Idea</span>
+    <span class="slide-en en">الفكرة الجوهرية</span>
+    <h2 class="slide-title">الفكرة الجوهرية</h2>
+    <div class="divider"></div>
+
+```
+<p style="font-size:16px;font-weight:300;color:var(--text);line-height:2;margin-bottom:36px;">
+  عميل WOSOL المثالي لا يبحث غالباً عن "كونسيرج" في Google.
+  هو يبحث عن <strong>رحلة فاخرة</strong> أو <strong>مناسبة خاصة</strong> أو <strong>وصول حصري لحدث</strong>.
+  <br/><br/>
+  الحل: نستقبله من احتياجه الفعلي، نقدم له تجربة أولى استثنائية، ثم نحوله إلى عضو في WOSOL.
+</p>
+
+<div class="cards-3" style="margin-bottom:28px;">
+  <div class="card">
+    <span class="card-tag en">Problem</span>
+    <div class="card-title">المشكلة الحالية</div>
+    <p class="card-body">العميل الذي يستحق خدمة WOSOL لا يعرف أنها موجودة، أو لا يبحث عنها بهذا الاسم.</p>
+  </div>
+  <div class="card">
+    <span class="card-tag en">Solution</span>
+    <div class="card-title">الحل المقترح</div>
+    <p class="card-body">بوابات جذب متخصصة تستقطبه عند نقطة احتياجه الفاخرة وتدخله إلى عالم WOSOL تلقائياً.</p>
+  </div>
+  <div class="card">
+    <span class="card-tag en">Outcome</span>
+    <div class="card-title">النتيجة المستهدفة</div>
+    <p class="card-body">عميل مؤهل عالي القيمة يمر بأول تجربة ممتازة، ثم يتحول إلى عضوية مستمرة.</p>
+  </div>
+</div>
+
+<div class="key-line">
+  الطريق للعضوية لا يمر دائماً بباب واحد — بل يبدأ بالاحتياج الصحيح.
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S04: THE VERTICALS -->
+
+<section class="slide slide-dark" id="s04">
+  <div class="slide-inner-wide">
+    <span class="slide-num-d en">04 · Specialized Verticals</span>
+    <span class="slide-en-d en">البوابات المتخصصة</span>
+    <h2 class="slide-title-d">البوابات المتخصصة</h2>
+    <p class="slide-sub-d">هذه ليست شركات مستقلة — بل بوابات جذب فاخرة تحت مظلة WOSOL Concierge</p>
+    <div class="divider"></div>
+
+```
+<div class="cards-3" style="gap:1px;background:rgba(209,199,186,.08);">
+  <div class="card-d">
+    <span class="card-tag en">WOSOL Journeys</span>
+    <div class="card-title-d">رحلات وصول</div>
+    <p class="card-body-d">تخطيط السفر الفاخر — الرحلات الخاصة، الفيلات، الطيران الخاص، السفاري، العلاج الطبي خارج المملكة.</p>
+  </div>
+  <div class="card-d">
+    <span class="card-tag en">WOSOL Moments</span>
+    <div class="card-title-d">مناسبات وصول</div>
+    <p class="card-body-d">تخطيط المناسبات الخاصة — أعياد الميلاد، المفاجآت، الهدايا الفاخرة، الاحتفالات الحميمة.</p>
+  </div>
+  <div class="card-d">
+    <span class="card-tag en">WOSOL Access</span>
+    <div class="card-title-d">وصول حصري</div>
+    <p class="card-body-d">الوصول VIP — الفعاليات الرياضية، الحفلات الحصرية، الأماكن الخاصة، التجارب النادرة.</p>
+  </div>
+  <div class="card-d">
+    <span class="card-tag en">WOSOL Executive</span>
+    <div class="card-title-d">وصول التنفيذيين</div>
+    <p class="card-body-d">خدمة رجال الأعمال والتنفيذيين — الزوار التنفيذيين، الاجتماعات، استقبال الوفود، الهدايا المؤسسية.</p>
+  </div>
+  <div class="card-d">
+    <span class="card-tag en">WOSOL Homes</span>
+    <div class="card-title-d">منازل وصول</div>
+    <p class="card-body-d">إدارة المنزل الفاخر — تجهيز الإقامات الخاصة، خدمات ما بعد الشراء العقاري، إدارة المسكن.</p>
+  </div>
+  <div class="card-d">
+    <span class="card-tag en">WOSOL World Cup</span>
+    <div class="card-title-d">كأس العالم وصول</div>
+    <p class="card-body-d">تجارب كأس العالم 2026 — الباقات الشاملة، التذاكر، الفنادق، النقل، التجارب المميزة.</p>
+  </div>
+</div>
+
+<div class="key-line-d" style="margin-top:28px;">
+  كل بوابة: <strong>صفحة هبوط مخصصة · محتوى متخصص · حملات مدفوعة · نموذج تأهيل · تجربة أولى · عضوية WOSOL</strong>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S05: PHASED LAUNCH -->
+
+<section class="slide slide-light" id="s05">
+  <div class="slide-inner">
+    <span class="slide-num en">05 · Phased Launch</span>
+    <span class="slide-en en">مراحل إطلاق البوابات</span>
+    <h2 class="slide-title">مراحل إطلاق البوابات المتخصصة</h2>
+    <div class="divider"></div>
+
+```
+<div class="phases">
+  <div class="phase">
+    <div class="phase-num en">Phase 01<br/>Day 0–30</div>
+    <div class="phase-content">
+      <div class="phase-timing en">Days 0 to 30 · الأولوية القصوى</div>
+      <div class="phase-title">WOSOL Journeys + WOSOL Moments</div>
+      <div class="phase-tags">
+        <span class="phase-tag en">Travel & Lifestyle</span>
+        <span class="phase-tag en">Occasions & Gifts</span>
+      </div>
+      <p class="phase-why">نقطة البداية المثلى لأن كليهما يجذبان ميزانيات عالية، يرتبطان مباشرة بنظام ذكاء العميل في WOSOL، ويولدان طلباً متكرراً قابلاً للتحول إلى عضوية.</p>
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-num en">Phase 02<br/>Day 31–60</div>
+    <div class="phase-content">
+      <div class="phase-timing en">Days 31 to 60 · بعد إثبات الطلب</div>
+      <div class="phase-title">WOSOL Access + WOSOL World Cup</div>
+      <div class="phase-tags">
+        <span class="phase-tag en">VIP Events</span>
+        <span class="phase-tag en">Sports & Global Moments</span>
+      </div>
+      <p class="phase-why">هذه البوابات مرتبطة بالطلب الموسمي والفعاليات الكبرى. تعمل جيداً بعد بناء قاعدة بيانات من الفترة الأولى، مع استهداف إعلاني أكثر دقة.</p>
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-num en">Phase 03<br/>Day 61–90</div>
+    <div class="phase-content">
+      <div class="phase-timing en">Days 61 to 90 · توسع مدروس</div>
+      <div class="phase-title">WOSOL Executive + WOSOL Homes</div>
+      <div class="phase-tags">
+        <span class="phase-tag en">B2B & Corporate</span>
+        <span class="phase-tag en">Recurring Lifestyle</span>
+      </div>
+      <p class="phase-why">هذه البوابات تحتاج دورة مبيعات أطول وعلاقات أعمق. تنطلق بعد إثبات نموذج الفانل وبناء الثقة في WOSOL كعلامة فاخرة ذات قيمة.</p>
+    </div>
+  </div>
+</div>
+
+<div class="key-line" style="margin-top:24px;">
+  "نبدأ ضيقاً، نثبت الجودة، ثم نتوسع."
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S06: FUNNEL SYSTEM -->
+
+<section class="slide slide-dark" id="s06">
+  <div class="slide-inner">
+    <span class="slide-num-d en">06 · Funnel System</span>
+    <span class="slide-en-d en">نظام الفانل</span>
+    <h2 class="slide-title-d">نظام تحويل العميل من احتياج إلى عضوية</h2>
+    <div class="divider"></div>
+
+```
+<div style="display:flex;flex-direction:column;gap:0;margin-bottom:32px;">
+  <div style="background:rgba(185,154,91,.12);border:1px solid rgba(185,154,91,.2);padding:20px 24px;display:flex;align-items:center;gap:18px;margin-bottom:1px;">
+    <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--gold);min-width:32px;">01</span>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--cream);margin-bottom:4px;">Luxury Intent · النية الفاخرة</div>
+      <div style="font-size:12.5px;font-weight:300;color:rgba(237,233,227,.55);">يبحث العميل عن احتياج محدد: رحلة، مناسبة، وصول حصري، أو خدمة تنفيذية</div>
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(209,199,186,.1);padding:20px 24px;display:flex;align-items:center;gap:18px;margin-bottom:1px;">
+    <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--gold);min-width:32px;">02</span>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--cream);margin-bottom:4px;">Specialized Gateway · البوابة المتخصصة</div>
+      <div style="font-size:12.5px;font-weight:300;color:rgba(237,233,227,.55);">يصل عبر إعلان مدفوع، محتوى أو بحث إلى صفحة هبوط WOSOL المخصصة</div>
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(209,199,186,.1);padding:20px 24px;display:flex;align-items:center;gap:18px;margin-bottom:1px;">
+    <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--gold);min-width:32px;">03</span>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--cream);margin-bottom:4px;">Lead Qualification · التأهيل</div>
+      <div style="font-size:12.5px;font-weight:300;color:rgba(237,233,227,.55);">يملأ نموذج التأهيل — الوجهة، التاريخ، الميزانية، الأولويات. يُصنَّف في CRM تلقائياً.</div>
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(209,199,186,.1);padding:20px 24px;display:flex;align-items:center;gap:18px;margin-bottom:1px;">
+    <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--gold);min-width:32px;">04</span>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--cream);margin-bottom:4px;">Private Planning Call · مكالمة التخطيط الخاص</div>
+      <div style="font-size:12.5px;font-weight:300;color:rgba(237,233,227,.55);">يتواصل فريق WOSOL مع العميل المؤهل لفهم احتياجاته بشكل شخصي وتقديم اقتراح مخصص</div>
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(209,199,186,.1);padding:20px 24px;display:flex;align-items:center;gap:18px;margin-bottom:1px;">
+    <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--gold);min-width:32px;">05</span>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--cream);margin-bottom:4px;">First Luxury Experience · التجربة الأولى</div>
+      <div style="font-size:12.5px;font-weight:300;color:rgba(237,233,227,.55);">يختبر العميل مستوى WOSOL في تجربة واحدة مدفوعة وممتازة تفوق توقعاته</div>
+    </div>
+  </div>
+  <div style="background:rgba(185,154,91,.08);border:1px solid rgba(185,154,91,.25);padding:20px 24px;display:flex;align-items:center;gap:18px;">
+    <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--gold);min-width:32px;">06</span>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sand);margin-bottom:4px;">WOSOL Membership · العضوية</div>
+      <div style="font-size:12.5px;font-weight:300;color:rgba(237,233,227,.65);">يتحول العميل إلى عضو في WOSOL Concierge — علاقة مستمرة، استباقية، وذات قيمة عالية</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S07: LANDING PAGE BLUEPRINT -->
+
+<section class="slide slide-light" id="s07">
+  <div class="slide-inner">
+    <span class="slide-num en">07 · Landing Page Blueprint</span>
+    <span class="slide-en en">نموذج صفحة الهبوط</span>
+    <h2 class="slide-title">نموذج صفحة الهبوط لكل بوابة</h2>
+    <p class="slide-sub">كل بوابة متخصصة تحتاج صفحة هبوط فاخرة تعكس مستوى WOSOL وتؤهل العميل بذكاء</p>
+    <div class="divider"></div>
+
+```
+<div class="bp-grid">
+  <div>
+    <div style="font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;">Page Structure · هيكل الصفحة</div>
+    <div class="bp-steps">
+      <div class="bp-step"><span class="bp-sn">01</span><span class="bp-st">Hero section مع وعد عاطفي فاخر</span></div>
+      <div class="bp-step"><span class="bp-sn">02</span><span class="bp-st">صورة فاخرة مرتبطة باحتياج العميل</span></div>
+      <div class="bp-step"><span class="bp-sn">03</span><span class="bp-st">أمثلة تطبيقية على الخدمة</span></div>
+      <div class="bp-step"><span class="bp-sn">04</span><span class="bp-st">"هذه الخدمة لمن يقدّر..." — من نخدم</span></div>
+      <div class="bp-step"><span class="bp-sn">05</span><span class="bp-st">ما تُدير WOSOL بالضبط</span></div>
+      <div class="bp-step"><span class="bp-sn">06</span><span class="bp-st">بيان الخصوصية والثقة</span></div>
+      <div class="bp-step"><span class="bp-sn">07</span><span class="bp-st">نموذج التأهيل الذكي</span></div>
+      <div class="bp-step"><span class="bp-sn">08</span><span class="bp-st">CTA: طلب تخطيط خاص</span></div>
+      <div class="bp-step"><span class="bp-sn">09</span><span class="bp-st">Powered by WOSOL Concierge</span></div>
+      <div class="bp-step"><span class="bp-sn">10</span><span class="bp-st">قسم ترقية العضوية</span></div>
+    </div>
+  </div>
+  <div class="bp-example">
+    <span class="bp-ex-tag en">Example: WOSOL Journeys</span>
+    <div class="bp-ex-hero">
+      رحلة فاخرة لا تبدأ بالحجز… تبدأ بمن يدير تفاصيلها.
+    </div>
+    <div style="font-family:'Poppins',sans-serif;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(185,154,91,.6);margin-bottom:10px;">Qualification Form</div>
+    <div class="bp-ex-items">
+      <div class="bp-ex-item">الوجهة المستهدفة</div>
+      <div class="bp-ex-item">التاريخ المقترح</div>
+      <div class="bp-ex-item">عدد المسافرين</div>
+      <div class="bp-ex-item">مستوى الخصوصية المطلوب</div>
+      <div class="bp-ex-item">نطاق الميزانية</div>
+      <div class="bp-ex-item">تفضيلات خاصة</div>
+    </div>
+    <div class="bp-upsell">
+      "إذا كانت رحلاتك بهذا المستوى، يمكن لعضوية WOSOL أن تجعل كل رحلة قادمة أسرع، أدق، وأكثر خصوصية."
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S08: AD COPIES -->
+
+<section class="slide slide-dark" id="s08">
+  <div class="slide-inner">
+    <span class="slide-num-d en">08 · Ad Copy Examples</span>
+    <span class="slide-en-d en">نماذج رسائل إعلانية</span>
+    <h2 class="slide-title-d">نماذج رسائل إعلانية لكل بوابة</h2>
+    <div class="divider"></div>
+
+```
+<div class="ads-grid">
+  <div class="ad-item">
+    <div class="ad-brand en">WOSOL<br/>Journeys</div>
+    <div class="ad-copies">
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"رحلة فاخرة لا تبدأ بالحجز… تبدأ بمن يدير تفاصيلها."</div>
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"سافر دون أن تحمل هم التنسيق، الحجوزات، التنقل، أو المفاجآت."</div>
+    </div>
+  </div>
+  <div class="ad-item">
+    <div class="ad-brand en">WOSOL<br/>Moments</div>
+    <div class="ad-copies">
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"لا تجعل مناسبتك المهمة تنتظر آخر لحظة."</div>
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"هدية تصل وكأنك اخترتها بنفسك… وتجربة تُدار بهدوء كامل."</div>
+    </div>
+  </div>
+  <div class="ad-item">
+    <div class="ad-brand en">WOSOL<br/>Access</div>
+    <div class="ad-copies">
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"الوصول الحقيقي ليس تذكرة… بل تجربة تُدار بالكامل."</div>
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"من المقاعد الخاصة إلى التجارب النادرة، نقرّبك مما لا يظهر للجميع."</div>
+    </div>
+  </div>
+  <div class="ad-item">
+    <div class="ad-brand en">WOSOL<br/>Executive</div>
+    <div class="ad-copies">
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"ضيفك التنفيذي يرى التفاصيل قبل الاجتماع."</div>
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"من المطار إلى العشاء، كل لحظة تعكس مستوى شركتك."</div>
+    </div>
+  </div>
+  <div class="ad-item">
+    <div class="ad-brand en">WOSOL<br/>Homes</div>
+    <div class="ad-copies">
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"منزلك جاهز قبل وصولك."</div>
+      <div class="ad-copy" style="background:rgba(255,255,255,.04);color:var(--cream);">"تفاصيل المنزل تُدار بهدوء… لتصل وتجد كل شيء كما يجب."</div>
+    </div>
+  </div>
+</div>
+
+<div style="background:rgba(185,154,91,.08);border:1px solid rgba(185,154,91,.18);padding:16px 20px;margin-top:24px;font-size:13px;color:rgba(237,233,227,.65);line-height:1.75;">
+  <strong style="color:var(--gold);">ملاحظة:</strong> أسلوب النسخ يجب أن يكون فاخراً، سرياً، ومدفوعاً بالعاطفة — بدون خصومات، بدون إلحاح رخيص، بدون لغة مبيعات صاخبة.
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S09: PILOT BUDGET -->
+
+<section class="slide slide-light" id="s09">
+  <div class="slide-inner-wide">
+    <span class="slide-num en">09 · 90-Day Pilot Budget</span>
+    <span class="slide-en en">ميزانية التجربة المقترحة</span>
+    <h2 class="slide-title">ميزانية التجربة المقترحة لمدة 90 يوم</h2>
+    <div class="divider"></div>
+
+```
+<div class="budget-grid" style="margin-bottom:28px;">
+  <div class="budget-card">
+    <span class="bc-option en">Option A · Lean Pilot</span>
+    <div class="bc-name">تجربة بحد أدنى</div>
+    <p class="bc-purpose">التحقق من الطلب بأقل إنفاق ممكن قبل الالتزام بميزانية أكبر.</p>
+    <ul class="bc-items">
+      <li class="bc-item">إعداد صفحة هبوط واحدة + نظام تتبع</li>
+      <li class="bc-item">إنتاج محتوى أولي (15 قطعة)</li>
+      <li class="bc-item">Google Search — اختبار كلمات مفتاحية</li>
+      <li class="bc-item">حملة انستغرام/سناب — المرحلة الأولى</li>
+      <li class="bc-item">CRM أساسي + تصنيف الـ Leads</li>
+      <li class="bc-item">تقرير أسبوعي للمتابعة</li>
+    </ul>
+  </div>
+  <div class="budget-card featured">
+    <span class="bc-option en">Option B · Balanced Pilot</span>
+    <div class="bc-name-d">تجربة متوازنة</div>
+    <p class="bc-purpose-d">إطلاق بوابتين بشكل احترافي وجمع بيانات كافية لاتخاذ قرار التوسع.</p>
+    <ul class="bc-items">
+      <li class="bc-item-d">2 صفحة هبوط فاخرة متكاملة</li>
+      <li class="bc-item-d">30–45 قطعة محتوى</li>
+      <li class="bc-item-d">8–12 إعلان مرئي</li>
+      <li class="bc-item-d">Google Search + Instagram + Snapchat</li>
+      <li class="bc-item-d">إعداد جمهور Retargeting</li>
+      <li class="bc-item-d">نموذج تأهيل ذكي + CRM متكامل</li>
+      <li class="bc-item-d">لوحة متابعة أسبوعية</li>
+    </ul>
+  </div>
+  <div class="budget-card">
+    <span class="bc-option en">Option C · Premium Pilot</span>
+    <div class="bc-name">تجربة شاملة</div>
+    <p class="bc-purpose">بناء نظام جذب فاخر متكامل بحجم إبداعي أكبر وقنوات متعددة.</p>
+    <ul class="bc-items">
+      <li class="bc-item">3–4 صفحات هبوط + بنية CRM كاملة</li>
+      <li class="bc-item">60+ قطعة محتوى</li>
+      <li class="bc-item">15–20 إعلان مرئي</li>
+      <li class="bc-item">Search + Meta + Snap + TikTok/Reels</li>
+      <li class="bc-item">مقالات SEO + اقتصاد المحتوى</li>
+      <li class="bc-item">تقسيم CRM + Retargeting + واتساب</li>
+      <li class="bc-item">لوحة تنفيذية للإدارة</li>
+    </ul>
+  </div>
+</div>
+
+<div style="background:rgba(185,154,91,.1);border:1px solid rgba(185,154,91,.2);padding:16px 20px;margin-bottom:20px;font-size:13.5px;color:var(--text);line-height:1.75;">
+  <strong style="color:var(--gold);">ملاحظة:</strong> الميزانية تُحدد بناءً على موافقة داخلية وشهية الإنفاق الإعلاني. الأرقام الدقيقة تُقدَّم في وثيقة منفصلة بعد تحديد البوابات المعتمدة.
+</div>
+
+<div class="key-line">
+  "هل نريد اختبار الطلب فقط، أم بناء نظام نمو قابل للتوسع؟"
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S10: FIRST 30 DAYS -->
+
+<section class="slide slide-dark" id="s10">
+  <div class="slide-inner">
+    <span class="slide-num-d en">10 · 30-Day Action Plan</span>
+    <span class="slide-en-d en">خطة أول 30 يوم</span>
+    <h2 class="slide-title-d">خطة أول 30 يوم تنفيذية</h2>
+    <div class="divider"></div>
+
+```
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+  <div class="cl-week">
+    <span class="cl-week-title en" style="color:var(--gold);">Week 1 · الأسبوع الأول</span>
+    <div class="cl-items">
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>اعتماد أول بوابتين: WOSOL Journeys + WOSOL Moments
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>تأكيد التسمية والتموضع لكل بوابة
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>تحديد حقول تأهيل العميل في نموذج الاستفسار
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>تحديد حقول CRM ومعايير تصنيف الـ Leads
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>بناء Wireframes لصفحتَي الهبوط
+      </div>
+    </div>
+  </div>
+  <div class="cl-week">
+    <span class="cl-week-title en" style="color:var(--gold);">Week 2 · الأسبوع الثاني</span>
+    <div class="cl-items">
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>كتابة نسخ صفحات الهبوط باللغة العربية
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>تحديد التوجيه البصري الفاخر للصفحتين
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>بناء الصفحتين وربطهما بالـ CRM
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>إعداد أول 15 فكرة محتوى عضوي
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>تحضير أول 6 إعلانات مرئية
+      </div>
+    </div>
+  </div>
+  <div class="cl-week">
+    <span class="cl-week-title en" style="color:var(--gold);">Week 3 · الأسبوع الثالث</span>
+    <div class="cl-items">
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>إطلاق صفحتَي الهبوط رسمياً
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>إطلاق Google Search — اختبار كلمات مفتاحية
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>إطلاق حملات Instagram/Snapchat المرئية
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>بدء نشر المحتوى العضوي المخصص
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>إعداد جمهورَي Retargeting للبوابتين
+      </div>
+    </div>
+  </div>
+  <div class="cl-week">
+    <span class="cl-week-title en" style="color:var(--gold);">Week 4 · الأسبوع الرابع</span>
+    <div class="cl-items">
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>مراجعة جودة الـ Leads المتوصل بها
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>تحليل نماذج التأهيل والأنماط
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>تحسين النسخ الإعلانية والتأهيل
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>إعداد أول تقرير تنفيذي للإدارة
+      </div>
+      <div class="cl-item" style="background:rgba(255,255,255,.04);border-color:rgba(209,199,186,.1);color:rgba(237,233,227,.75);">
+        <div class="cl-dot"></div>قرار: هل ننشط WOSOL Access في الشهر الثاني؟
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="key-line-d" style="margin-top:24px;">
+  "أول 30 يوم ليست للتوسع، بل لإثبات جودة الطلب."
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S11: KPIs -->
+
+<section class="slide slide-light" id="s11">
+  <div class="slide-inner-wide">
+    <span class="slide-num en">11 · Key Performance Indicators</span>
+    <span class="slide-en en">مؤشرات الأداء الرئيسية</span>
+    <h2 class="slide-title">مؤشرات الأداء — ما الذي نقيسه فعلاً</h2>
+    <div class="divider"></div>
+
+```
+<div class="kpi-grid" style="margin-bottom:28px;">
+  <div class="kpi-cell">
+    <span class="kpi-label en">Lead Quality</span>
+    <div class="kpi-name">Leads فاخرة مؤهلة</div>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-label en">High Value</span>
+    <div class="kpi-name">Leads بميزانية +50,000 ريال</div>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-label en">Planning Calls</span>
+    <div class="kpi-name">مكالمات تخطيط خاصة</div>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-label en">Experience Rate</span>
+    <div class="kpi-name">معدل تحويل التجربة الأولى</div>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-label en">Membership Rate</span>
+    <div class="kpi-name">معدل تحويل العضوية</div>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-label en">Request Value</span>
+    <div class="kpi-name">متوسط قيمة الطلب</div>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-label en">CPL</span>
+    <div class="kpi-name">تكلفة الـ Lead المؤهل</div>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-label en">Source Quality</span>
+    <div class="kpi-name">جودة مصدر العميل</div>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-label en">Repeat Rate</span>
+    <div class="kpi-name">معدل تكرار الطلب</div>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-label en">Referral Rate</span>
+    <div class="kpi-name">معدل الإحالات</div>
+  </div>
+</div>
+
+<div class="key-line">
+  "الهدف ليس رفع عدد الاستفسارات، بل رفع جودة الفرص التي تستحق وقت WOSOL."
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S12: EXECUTIVE DASHBOARD -->
+
+<section class="slide slide-dark" id="s12">
+  <div class="slide-inner-wide">
+    <span class="slide-num-d en">12 · Executive Dashboard</span>
+    <span class="slide-en-d en">لوحة متابعة الإدارة</span>
+    <h2 class="slide-title-d">لوحة متابعة الإدارة</h2>
+    <p class="slide-sub-d">ما يراه المالك كل أسبوع — أرقام واضحة تقود قرارات واضحة</p>
+    <div class="divider"></div>
+
+```
+<div class="dash-grid">
+  <div class="dash-group">
+    <span class="dg-title en">Lead Quality · جودة العملاء</span>
+    <div class="dg-items">
+      <div class="dg-item">عدد العملاء المؤهلين هذا الأسبوع</div>
+      <div class="dg-item">عدد العملاء بميزانية 50,000+ ريال</div>
+      <div class="dg-item">مصدر العميل (قناة، حملة، بوابة)</div>
+      <div class="dg-item">نوع الطلب الأكثر تكراراً</div>
+    </div>
+  </div>
+  <div class="dash-group">
+    <span class="dg-title en">Funnel · مسار التحويل</span>
+    <div class="dg-items">
+      <div class="dg-item">زيارات صفحات الهبوط</div>
+      <div class="dg-item">نسبة تعبئة نموذج التأهيل</div>
+      <div class="dg-item">عدد مكالمات التخطيط الخاصة</div>
+      <div class="dg-item">أول تجربة منفذة هذا الأسبوع</div>
+      <div class="dg-item">عدد التحويلات إلى عضوية</div>
+    </div>
+  </div>
+  <div class="dash-group">
+    <span class="dg-title en">Commercial · الأداء التجاري</span>
+    <div class="dg-items">
+      <div class="dg-item">متوسط قيمة الطلب</div>
+      <div class="dg-item">تكلفة الـ Lead المؤهل</div>
+      <div class="dg-item">الإيراد المحتمل من الـ Pipeline</div>
+      <div class="dg-item">العضويات الجديدة</div>
+      <div class="dg-item">الإحالات المستلمة</div>
+    </div>
+  </div>
+  <div class="dash-group">
+    <span class="dg-title en">Quality · جودة التنفيذ</span>
+    <div class="dg-items">
+      <div class="dg-item">سرعة الرد على الـ Lead الجديد</div>
+      <div class="dg-item">جودة التنفيذ في التجربة الأولى</div>
+      <div class="dg-item">رضا العميل بعد أول تجربة</div>
+      <div class="dg-item">ملاحظات العملاء المستلمة</div>
+    </div>
+  </div>
+</div>
+
+<div class="key-line-d" style="margin-top:24px;">
+  "لا نرفع أرقام كثيرة، نرفع قرارات واضحة."
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S13: BRAND PROTECTION -->
+
+<section class="slide slide-light" id="s13">
+  <div class="slide-inner">
+    <span class="slide-num en">13 · Brand Protection</span>
+    <span class="slide-en en">حماية براند WOSOL</span>
+    <h2 class="slide-title">كيف نحافظ على قوة براند WOSOL؟</h2>
+    <p class="slide-sub">أكبر خطر هو أن تبدو البوابات كشركات مستقلة غير مرتبطة. هذه القواعد تحمي الهوية.</p>
+    <div class="divider"></div>
+
+```
+<div class="brand-rules">
+  <div class="br-item">
+    <span class="br-n">01</span>
+    <span class="br-t">كل بوابة يجب أن تحمل <strong>"Powered by WOSOL Concierge"</strong> بشكل واضح في أسفل الصفحة.</span>
+  </div>
+  <div class="br-item">
+    <span class="br-n">02</span>
+    <span class="br-t">استخدام هوية WOSOL البصرية في جميع الصفحات — الألوان، الخطوط، النبرة، والشعار.</span>
+  </div>
+  <div class="br-item">
+    <span class="br-n">03</span>
+    <span class="br-t">لا إنشاء شركات وهمية أو مضللة — هذه بوابات جذب، ليست كيانات مستقلة.</span>
+  </div>
+  <div class="br-item">
+    <span class="br-n">04</span>
+    <span class="br-t">لا وعود بوصول غير متاح — كل ما يُوعد به يجب أن يكون قابلاً للتنفيذ فعلياً.</span>
+  </div>
+  <div class="br-item">
+    <span class="br-n">05</span>
+    <span class="br-t">كل Lead يدخل CRM واحد موحد تحت WOSOL — لا قواعد بيانات متفرقة.</span>
+  </div>
+  <div class="br-item">
+    <span class="br-n">06</span>
+    <span class="br-t">كل تجربة أولى يجب أن تكون مصممة لدعم تحويل العميل إلى عضوية — ليست تجربة معزولة.</span>
+  </div>
+  <div class="br-item">
+    <span class="br-n">07</span>
+    <span class="br-t">جميع الصفحات تشترك في فلسفة خدمة واحدة: <strong>الخصوصية، الثقة، السرية، الوصول، والتنفيذ السلس.</strong></span>
+  </div>
+</div>
+
+<div class="key-line" style="margin-top:24px;">
+  "العميل يجب أن يشعر أنه دخل من باب متخصص، لكنه ما زال داخل عالم WOSOL."
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S14: GO / NO-GO RULES -->
+
+<section class="slide slide-dark" id="s14">
+  <div class="slide-inner-wide">
+    <span class="slide-num-d en">14 · Scale · Pause · Improve</span>
+    <span class="slide-en-d en">قواعد التوسع أو الإيقاف</span>
+    <h2 class="slide-title-d">قواعد التوسع أو الإيقاف</h2>
+    <div class="divider"></div>
+
+```
+<div class="gng-grid" style="margin-bottom:28px;">
+  <div class="gng-col scale">
+    <span class="gng-tag en">Scale ↑ · وسّع</span>
+    <div class="gng-items">
+      <div class="gng-item">بوابة واحدة تُنتج Leads مؤهلة باستمرار لمدة 3 أسابيع</div>
+      <div class="gng-item">30%+ من الـ Leads ذوو قيمة فعلية عالية</div>
+      <div class="gng-item">مكالمات التخطيط تُظهر نية شراء حقيقية</div>
+      <div class="gng-item">Lead واحد أو أكثر تحوّل إلى تجربة مدفوعة</div>
+      <div class="gng-item">بيانات CRM تُظهر إمكانية التكرار والاستمرار</div>
+    </div>
+  </div>
+  <div class="gng-col pause">
+    <span class="gng-tag en">Pause ✗ · أوقف</span>
+    <div class="gng-items">
+      <div class="gng-item">معظم الـ Leads بميزانية منخفضة لا تتناسب مع WOSOL</div>
+      <div class="gng-item">المستخدمون يطلبون خدمات عامة ورخيصة</div>
+      <div class="gng-item">تكلفة الـ Lead المؤهل مرتفعة جداً دون تحويل</div>
+      <div class="gng-item">الزيارات عالية لكن نسبة تعبئة النموذج ضعيفة</div>
+      <div class="gng-item">الفريق لا يستطيع تنفيذ الطلبات بمستوى WOSOL</div>
+    </div>
+  </div>
+  <div class="gng-col improve">
+    <span class="gng-tag en">Improve ~ · حسّن</span>
+    <div class="gng-items">
+      <div class="gng-item">الـ Leads جيدة لكن نسبة التحويل منخفضة</div>
+      <div class="gng-item">النسخ الإعلانية تجذب فضولاً لكن ليس تحرّكاً</div>
+      <div class="gng-item">نموذج التأهيل طويل جداً أو يُربك العميل</div>
+      <div class="gng-item">جودة الترافيك المدفوع تتفاوت بين القنوات</div>
+    </div>
+  </div>
+</div>
+
+<div class="key-line-d">
+  "كل بوابة إما تثبت قيمتها بالأرقام، أو نعيد صياغتها، أو نوقفها."
+</div>
+```
+
+  </div>
+</section>
+
+<!-- S15: FINAL -->
+
+<section class="slide final" id="s15">
+  <div class="final-inner">
+    <span class="final-tag en">15 · Executive Conclusion · الخلاصة التنفيذية</span>
+    <div class="final-divider"></div>
+
+```
+<p class="final-stmt">
+  هذه الخطة لا تهدف إلى إنشاء صفحات كثيرة أو إطلاق أسماء إضافية فقط.
+  <br/>
+  الهدف هو بناء نظام جذب فاخر يجعل العميل المناسب يدخل من احتياج واضح،
+  يكشف قدرته الشرائية من خلال طلبه،
+  يمر بتجربة أولى ممتازة،
+  ثم يتحول إلى علاقة عضوية طويلة مع WOSOL Concierge.
+</p>
+
+<div class="final-bold">
+  "WOSOL لا تحتاج عملاء أكثر… تحتاج مداخل أذكى للعملاء الأعلى قيمة."
+</div>
+
+<div class="final-divider"></div>
+
+<p class="final-en en">
+  Luxury Intent<br/>
+  → Qualified Lead<br/>
+  → Private Experience<br/>
+  → Membership Growth
+</p>
+
+<div style="margin-top:52px;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.18em;color:rgba(209,199,186,.25);text-transform:uppercase;">
+  WOSOL CONCIERGE · CONFIDENTIAL INTERNAL DOCUMENT · 2026
+</div>
+```
+
+  </div>
+</section>
+
+</div><!-- /main -->
+
+<script>
+'use strict';
+
+/* Sidebar toggle mobile */
+const sb=document.getElementById('sidebar');
+const mbt=document.getElementById('mob-toggle');
+mbt.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{
+  if(!sb.contains(e.target)&&!mbt.contains(e.target))sb.classList.remove('open');
+});
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(href==='#')return;
+    const el=document.querySelector(href);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'});}
+  });
+});
+
+/* Active nav + progress */
+const slides=document.querySelectorAll('.slide[id]');
+const navLinks=document.querySelectorAll('.sb-nav a');
+const progFill=document.getElementById('prog-fill');
+const progTxt=document.getElementById('prog-txt');
+const total=slides.length;
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      navLinks.forEach(a=>{
+        a.classList.toggle('active',a.getAttribute('href')==='#'+id);
+      });
+      // progress
+      const idx=Array.from(slides).indexOf(e.target);
+      const pct=Math.round(((idx+1)/total)*100);
+      progFill.style.width=pct+'%';
+      progTxt.textContent=pct+'%';
+    }
+  });
+},{threshold:.4});
+
+slides.forEach(s=>obs.observe(s));
+</script>
+
+</body>
+</html>
